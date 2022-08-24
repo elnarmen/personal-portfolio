@@ -3,7 +3,7 @@ from .models import Blog
 from .templatetags import pluralize
 
 def all_blogs(request):
-    blogs = Blog.objects.all()
+    blogs = Blog.objects.filter(is_published=True)
     return render(request, 'blog/all_blogs.html', {'blogs': blogs, 'pluralize': pluralize})
 
 def detail(request, blog_id):
